@@ -5,7 +5,9 @@ import { useHistory, useParams } from "react-router-dom"
 export const RequestForm = () => {
     const [request, updateRequest] = useState({
         description: "",
-        deadline: ""
+        deadline: "",
+        dateAccepted: "",
+        completed: false
     })
 
     const {memberId} = useParams()
@@ -20,7 +22,9 @@ export const RequestForm = () => {
             userId: parseInt(musiLinkUser),
             memberId: parseInt(memberId),
             description: request.description,
-            deadline: request.deadline
+            deadline: request.deadline,
+            completed: request.completed,
+            dateAccepted: request.dateAccepted
         }
 
         const fetchOption = {

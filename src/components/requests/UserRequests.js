@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
-import { useHistory } from "react-router-dom"
 import { getUserRequests } from "../ApiManager"
+import "./UserRequests.css"
 
 export const UserRequests = () => {
     // deconstruct an array with our requests array and a function to update said requests on page load
@@ -31,11 +31,11 @@ export const UserRequests = () => {
     // return a string that shows the info on the request for every request
     return(
         <>
-            <h2>Your Requests</h2>
+            <h2 className="requestsTitle">Your Requests</h2>
             {
                 requests.map((request) => {
-                    return <p key={`request--${request.id}`}>Deadline: {request.deadline}
-                    <button onClick={() => {deleteRequests(request.id)}}>Delete</button></p>
+                    return <p className="request" key={`request--${request.id}`}>Deadline: {request.deadline} <br/> Requestee: {request.member.name}<br/> Description: {request.description}
+                    <button className="deleteButton" onClick={() => {deleteRequests(request.id)}}>Delete</button></p>
                 })
             }
         </>

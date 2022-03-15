@@ -1,0 +1,7 @@
+.landingSection {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    flex-direction: row;
+    
+}

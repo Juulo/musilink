@@ -7,7 +7,7 @@ export const getMembers = () => {
 // fetches our user's requests data from json server
 export const getUserRequests = () => {
     const musiLinkUser = localStorage.getItem("musilink_user")
-    return fetch(`http://localhost:8088/requests?userId=${parseInt(musiLinkUser)}`)
+    return fetch(`http://localhost:8088/requests?userId=${parseInt(musiLinkUser)}&_expand=member`)
         .then(res => res.json())
 }
 

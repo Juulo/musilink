@@ -1,0 +1,16 @@
+.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.navbar__item {
+    flex-basis: 20%;
+    list-style-type: none;
+}
+
+.navLogo {
+    size: 2px;
+    object-fit: contain;
+}

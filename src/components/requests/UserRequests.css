@@ -1,0 +1,22 @@
+.requestsTitle {
+    justify-content: center;
+    display: flex;
+}
+.request {
+    text-align: center;
+    margin: 1rem auto;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding: 2rem;
+    border-radius: 1rem;
+    /* background-color: rgb(197, 133, 197); */
+    max-width: 300px;
+}
+
+.deleteButton {
+    margin: 0.5rem;
+    max-height: 30px;
+    /* border-radius: 11px;
+    border-color: transparent; */
+}

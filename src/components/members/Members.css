@@ -1,0 +1,28 @@
+.membersTitle {
+    justify-content: center;
+    display: flex;
+}
+.member {
+    text-align: center;
+    margin: 1rem auto;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding: 2rem;
+    border-radius: 1rem;
+    /* background-color: rgb(197, 133, 197); */
+    max-width: 300px;
+}
+
+.requestButton {
+    /* margin: 0.5rem;
+    max-height: 30px;
+    border-radius: 11px;
+    border-color: transparent; */
+}
+
+.searchArea {
+    justify-content: center;
+    display: flex;
+    margin: 1rem auto;
+}

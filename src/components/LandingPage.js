@@ -1,5 +1,7 @@
 import React from "react"
 import { useHistory } from "react-router-dom"
+import logo from "./logo2.png"
+import "./LandingPage.css"
 
 // simple html component for landing page
 export const LandingPage = () => {
@@ -7,7 +9,7 @@ export const LandingPage = () => {
     return (
         <section className="landingSection">
             <div className="landingLogo">
-                <img src="src\components\images\Logo.png"></img>
+                <img src={logo}></img>
             </div>
             <div className="landingText">
                 <h2>Hi, Welcome to MusiLink</h2>

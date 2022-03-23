@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { getMembers } from "../ApiManager"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import "./Members.css"
 
 // component returns html for all members in our database
@@ -34,7 +34,7 @@ export const Members = () => {
                         return member
                     }
                 }).map((member) => {
-                    return <div className="member" key={`member--${member.id}`}>{member.name}<br/>{member.email}<br/>{member.phone}<br/>
+                    return <div className="member" key={`member--${member.id}`}>{member.user.name}<br/>{member.user.email}<br/>{member.phone}<br/>
                     {member.tag.tag}<br/>{member.genre.genre}<br/>${member.budget}
                     <div><button className="requestButton" onClick={() => history.push(`/makeRequest/${member.id}`)}>Make Request</button></div></div>
                 })

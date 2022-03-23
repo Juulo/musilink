@@ -3,6 +3,7 @@
     flex-wrap: nowrap;
     justify-content: space-evenly;
     flex-direction: row;
+    overflow: hidden;
 }
 
 .navbar__item {
@@ -11,6 +12,7 @@
 }
 
 .navLogo {
-    size: 2px;
-    object-fit: contain;
+    max-width: 50%;
+    height: 50%;
+    display: block;
 }

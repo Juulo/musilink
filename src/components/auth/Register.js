@@ -13,29 +13,40 @@ export const Register = (props) => {
             .then(res => res.json())
             .then(user => !!user.length)
     }
+
+    // this function has to check whether the checkbox was clicked (thus making isMember true)
+    // if it wasn't clicked POST and send user to userRequests
+    // if it was clicked POST and send user to memberRequests
     const handleRegister = (e) => {
         e.preventDefault()
         existingUserCheck()
             .then((userExists) => {
-                if (!userExists) {
-                    fetch("http://localhost:8088/users", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(user)
+                fetch("http://localhost:8088/users", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(createdUser => {
+                        if (createdUser.hasOwnProperty("id")) {
+                            localStorage.setItem("musilink_user", createdUser.id)
+                        }
                     })
-                        .then(res => res.json())
-                        .then(createdUser => {
-                            if (createdUser.hasOwnProperty("id")) {
-                                localStorage.setItem("musilink_user", createdUser.id)
-                                history.push("/userRequests")
-                            }
-                        })
-                }
-                else {
-                    conflictDialog.current.showModal()
-                }
+                    .then(
+                        () => {
+                        if (!userExists && !user.isMember) {
+                            history.push("/userRequests")
+                        }
+                        else if (!userExists && user.isMember) {
+                            localStorage.setItem("musilink_member", user.memberId)
+                            history.push("/memberRequests")             
+                        }
+                        else {
+                            conflictDialog.current.showModal()
+                        }
+                    })  
             })
     }
 
@@ -45,6 +56,11 @@ export const Register = (props) => {
         setUser(copy)
     }
 
+    const updateIsMember = (evt) => {
+        const copy = {...user}
+        copy.isMember = evt.target.checked 
+        setUser(copy)
+    }
 
     return (
         <main style={{ textAlign: "center" }}>
@@ -64,6 +80,10 @@ export const Register = (props) => {
                 <fieldset>
                     <label htmlFor="email"> Email address </label>
                     <input onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="email"> Become a Member? </label>
+                    <input onChange={updateIsMember} type="checkbox" id="isMember" className="form-control"/>
                 </fieldset>
                 <fieldset>
                     <button type="submit"> Register </button>

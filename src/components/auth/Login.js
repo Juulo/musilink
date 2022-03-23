@@ -14,13 +14,24 @@ export const Login = () => {
             .then(user => user.length ? user[0] : false)
     }
 
+    // we now need this function to send the user  to a different view if they're a member on login
     const handleLogin = (e) => {
         e.preventDefault()
         existingUserCheck()
             .then(exists => {
                 if (exists) {
                     localStorage.setItem("musilink_user", exists.id)
-                    history.push("/userRequests")
+                    if (!exists.isMember) {                        
+                        history.push("/userRequests")
+                    }
+                    else if (exists.isMember) {
+                        fetch(`http://localhost:8088/members?userId=${exists.id}`)
+                        .then((data)=>data.json())
+                        .then((data)=>{
+                            localStorage.setItem("musilink_member", data[0].id)                      
+                            history.push("/memberRequests")
+                        })
+                    }
                 } else {
                     existDialog.current.showModal()
                 }

@@ -6,8 +6,10 @@ export const RequestForm = () => {
     const [request, updateRequest] = useState({
         description: "",
         deadline: "",
+        accepted: false,
         dateAccepted: "",
-        completed: false
+        completed: false,
+        dateCompleted: ""
     })
 
     const {memberId} = useParams()
@@ -23,8 +25,10 @@ export const RequestForm = () => {
             memberId: parseInt(memberId),
             description: request.description,
             deadline: request.deadline,
+            accepted: request.accepted,
+            dateAccepted: request.dateAccepted,
             completed: request.completed,
-            dateAccepted: request.dateAccepted
+            dateCompleted: request.dateCompleted
         }
 
         const fetchOption = {
@@ -34,7 +38,6 @@ export const RequestForm = () => {
             },
             body: JSON.stringify(newRequest)
         }
-        debugger
         return fetch("http://localhost:8088/requests", fetchOption)
             .then(() => history.push("/userRequests"))
     }

@@ -8,6 +8,7 @@ import "./MusiLink.css";
 import { LandingPage } from "./LandingPage";
 
 // component that tells index file whether to load the landing page or load in or to send to requests 
+// this component now needs to send the user to a different view if they have the isMember property
 export const MusiLink = () => (
     <>
     <Route

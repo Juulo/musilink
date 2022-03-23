@@ -1,11 +1,12 @@
 import React from "react"
-import { Link, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 import logo from "./navlogo2.png"
 import "./Navbar.css"
 
 export const Navbar = () => {
+    //Links for browser components
     return(
-        //Links for browser components
+        <>
         <ul className="navbar">
             <div className="navLogo">
                 <img src={logo}></img>
@@ -21,5 +22,6 @@ export const Navbar = () => {
                     localStorage.removeItem("musilink_user")}}>Logout</Link>
             </div>
         </ul>
+        </>
     )
 }

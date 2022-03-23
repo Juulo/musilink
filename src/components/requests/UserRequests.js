@@ -53,15 +53,15 @@ export const UserRequests = () => {
                         return user.id === request.member.userId
                     })
                         if(!request.accepted && !request.completed) {
-                            return <div className="pendingRequests"><p key={`request--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMember.name}<br/> Description: {request.description}
+                            return <div className="pendingRequests"><p key={`pendingRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMember.name}<br/> Description: {request.description}
                             <button className="deleteButton" onClick={() => deleteRequests(request.id)}>Delete</button>
                             </p></div>
                         } else if (request.accepted && !request.completed) {
-                            return <div className="acceptedRequests"><p key={`request--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMember.name}<br/> Description: {request.description}
+                            return <div className="acceptedRequests"><p key={`acceptedRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMember.name}<br/> Description: {request.description}
                             <button className="deleteButton" onClick={() => deleteRequests(request.id)}>Delete</button>
                             </p></div>
                         } else if (!request.accepted && request.completed) {
-                            return <div className="completedRequests"><p key={`request--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMember.name}<br/> Description: {request.description}
+                            return <div className="completedRequests"><p key={`completedRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMember.name}<br/> Description: {request.description}
                             <button className="deleteButton" onClick={() => deleteRequests(request.id)}>Delete</button>
                             </p></div>
                         }

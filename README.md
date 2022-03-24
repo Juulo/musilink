@@ -4,43 +4,22 @@
 
 MusiLink is a freelance site built for the musically inclined not only to help exchange services between one another, but to help those wanting to break into the music scene and are looking for work.
 
+## The Development Process
+
+I developed this app over the course of about a few weeks with the help of peers and other knowledgable developers. After meeting MVP in about 3-4 days, working on necessary CRUD features. I began implementing stretch goals that I had established for myself. This app is meant to mirror other popular freelance sites that both offers services and contractual work for those in the music industry. So a part of that process is creating a two portal system, where an user can decide what side of the application they want to experience. The hardest part of developing this application was creating that second portal for our "Members". I had to go back to the drawing board to even restructure my ERD to make sure I had the most optimal solution to the problem. Now the app is fully fledged with the ability to create an account or login as a member or a user, which gives whoever is using the app certain features that the other doesn't have.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## How to install and run this project
 
-In the project directory, you can run:
+If you would like to play around with this project you can use the live site (mwhich may or may not be active). You can also follow these instructions to download it and test it out on your local machine.
 
-### `npm start`
+Note The api key will not work for any referrer other than my live site on digitalocean. If you would like to use the google maps functionality, you will need to generate a google maps api key for yourself and replace it in /src/repositories/Setting.js. Google Maps Javascript API Docs.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
+- Clone this repo
+- Find my "musilink-api" repo to access the database directory used for this project and clone that repository
+- In the database directory run json-server database.json -p 8088 -w
+- Navigate to the musilink directory in you terminal
+- In the project directory run npm start
+- In a browser, open localhost:3000 and you should see the app running.
 

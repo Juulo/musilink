@@ -1,6 +1,190 @@
-.requestTypes {
+.requestsTitle {
+    justify-content: center;
+    text-align: center;
     display: flex;
+}
+
+.requestTypes {
+    display: flex ;
     flex-wrap: nowrap;
     justify-content: space-evenly;
     flex-direction: row;
+    width: 100%;
 }
+
+.requestTypes h4 {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.76);
+}
+
+.pending {
+    text-align: center;
+}
+
+.accepted {
+    text-align: center;
+}
+
+.completed {
+    text-align: center;
+}
+
+.pendingMemberRequests {
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+    margin: 3.5rem;
+}
+
+.acceptedMemberRequests {
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+    margin: 3.5rem;
+}
+.completedMemberRequests {
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+    margin: 3.5rem;
+}
+
+.pendingRequests {
+    text-align: center;
+    background-color: rgb(255, 251, 251);
+    border-radius: 0.2rem;
+    padding: 12px;
+    box-shadow: 0px 3px 3px;
+    margin: 0.2rem;
+    transition: all .2s ease-in-out;
+}
+
+.pendingRequests:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 20px;
+    background-color: rgb(255, 183, 183);
+}
+
+.acceptedRequests {
+    text-align: center;
+    background-color: rgb(255, 251, 251);
+    border-radius: 0.2rem;
+    padding: 12px;
+    box-shadow: 0px 3px 3px;
+    margin: 0.2rem;
+    transition: all .2s ease-in-out;
+}
+
+.acceptedRequests:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 20px;
+    background-color: rgb(253, 180, 250);
+}
+
+.completedRequests {
+    text-align: center;
+    background-color: rgb(255, 251, 251);
+    border-radius: 0.2rem;
+    padding: 12px;
+    box-shadow: 0px 3px 3px;
+    margin: 0.2rem;
+    transition: all .2s ease-in-out;
+}
+
+.completedRequests:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 20px;
+    background-color: rgb(189, 247, 178);
+}
+
+.profileButton {
+    position: relative;
+    bottom: 1rem;
+    left: 3rem;
+}
+
+.denyButton {
+    margin: 12px;
+    padding: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    border-width: 0px;
+    border-radius: 0.4rem;
+}
+
+.denyButton:hover {
+    background-color: rgb(201, 199, 199);
+    border-radius: inherit;
+    border-color: transparent; 
+}
+
+.abandonButton {
+    margin: 12px;
+    padding: 0.2rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    transition: all 0.3s ease 0s;
+    border-width: 0px;
+    border-radius: 0.4rem;
+}
+
+.abandonButton:hover {
+    background-color: rgb(201, 199, 199);
+    border-radius: inherit;
+    border-color: transparent; 
+}
+
+.acceptButton {
+    margin: 12px;
+    padding: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    border-width: 0px;
+    border-radius: 0.4rem;
+}
+
+.acceptButton:hover {
+    background-color: rgb(127, 248, 147);
+    border-radius: inherit;
+    border-color: transparent; 
+}
+
+.completeButton {
+    margin: 12px;
+    padding: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    transition: all 0.3s ease 0s;
+    border-width: 0px;
+    border-radius: 0.4rem;
+}
+
+.completeButton:hover {
+    background-color: rgb(127, 248, 147);
+    border-radius: inherit;
+    border-color: transparent; 
+}
+
+.memberDeleteButton {
+    margin: 12px;
+    padding: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    transition: all 0.3s ease 0s;
+    letter-spacing: 0.5px;
+    border-width: 0px;
+    border-radius: 0.4rem;
+}
+
+.memberDeleteButton:hover {
+    background-color: rgb(201, 199, 199);
+    border-radius: inherit;
+    border-color: transparent; 
+}
+

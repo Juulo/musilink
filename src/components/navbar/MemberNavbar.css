@@ -3,7 +3,7 @@
     flex-wrap: nowrap;
     justify-content: space-evenly;
     flex-direction: row;
-    text-align: center;
+    overflow: hidden;
 }
 
 .navbar__item {
@@ -11,7 +11,8 @@
     list-style-type: none;
 }
 
-.navLogo {
-    width: 40%;
-    height: 60%;
+.navLogo img{
+    width: 12px;
+    height: 50%;
+    display: block;
 }

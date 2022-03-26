@@ -3,5 +3,15 @@
     flex-wrap: nowrap;
     justify-content: space-evenly;
     flex-direction: row;
-    
+    margin: 1rem 2rem;
+    padding: 9rem;
+}
+
+.landingLogo {
+    padding: 5rem;
+}
+
+.landingText {
+    padding: 0;
+    width: 50rem;
 }

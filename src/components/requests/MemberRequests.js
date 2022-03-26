@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getAllUsers, getMemberRequests } from "../ApiManager";
 import { useHistory } from "react-router-dom";
+import "./MemberRequests.css"
 
 // create a component that displays all requests for logged in member
 export const MemberRequests = () => {
@@ -104,36 +105,50 @@ export const MemberRequests = () => {
         <>
             <h2 className="requestsTitle">Your Requests</h2>
             <div className="requestTypes">
-                <h4 className="pending">Pending Requests</h4>                
-                <h4 className="accepted">Accepted Requests</h4>                
-                <h4 className="completed">Completed Requests</h4>                
+                <div className="pendingMemberRequests">
+                    <h4 className="pending">Pending Requests</h4>
+                    {
+                        requests.map((request) => {
+                            if(!request.accepted && !request.completed) {
+                                return <div align="left" className="pendingRequests"><p key={`pendingRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name} <br/> Description: {request.description}
+                                </p><button className="denyButton" onClick={() => denyRequest(request.id)}>Deny</button>
+                                <button className="acceptButton" onClick={(evt) => acceptRequest(evt, request)}>Accept</button>
+                                </div>
+                            }
+                        })
+                    }
+                </div>               
+                <div className="acceptedMemberRequests">
+                    <h4 className="accepted">Accepted Requests</h4>
+                    {
+                        requests.map((request) => {
+                            if(request.accepted && !request.completed) {
+                                return <div align="center" className="acceptedRequests"><p key={`acceptedRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name}<br/> Description: {request.description}
+                                </p><button className="abandonButton" onClick={() => denyRequest(request.id)}>Abandon</button>
+                                <button className="completeButton" onClick={(evt) => completeRequest(evt, request)}>Complete</button>
+                                </div>
+                            }
+                        })
+                    }
+                </div>                  
+                <div className="completedMemberRequests">
+                    <h4 className="completed">Completed Requests</h4>
+                    {
+                        requests.map((request) => {
+                            if(!request.accepted && request.completed) {
+                                return <div align="right" className="completedRequests"><p key={`completedRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name}<br/> Description: {request.description}
+                                </p><button className="memberDeleteButton" onClick={() => denyRequest(request.id)}>Delete</button>
+                                </div>
+                            }
+                        })
+                    }
+                </div>
             </div>
-            <div className="memberRequests">
-            {
-                requests.map((request) => {
-                    if(!request.accepted && !request.completed) {
-                        return <div className="pendingRequests"><p key={`pendingRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name} <br/> Description: {request.description}
-                        <button className="denyButton" onClick={() => denyRequest(request.id)}>Deny</button>
-                        <button className="acceptButton" onClick={(evt) => acceptRequest(evt, request)}>Accept</button>
-                        </p></div>
-                    } else if (request.accepted && !request.completed) {
-                        return <div className="acceptedRequests"><p key={`acceptedRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name}<br/> Description: {request.description}
-                        <button className="denyButton" onClick={() => denyRequest(request.id)}>Abandon</button>
-                        <button className="completeButton" onClick={(evt) => completeRequest(evt, request)}>Complete</button>
-                        </p></div>
-                    } else if (!request.accepted && request.completed) {
-                        return <div className="completedRequests"><p key={`completedRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name}<br/> Description: {request.description}
-                        <button className="denyButton" onClick={() => denyRequest(request.id)}>Delete</button>
-                        </p></div>
-                    } 
-                })
-            }
             <div className="linkToProfile">
                 <button className="profileButton" onClick={() => 
                     history.push(`/userProfile/${parseInt(localStorage.getItem("musilink_user"))}`)}>
                         Visit Profile
                 </button>
-            </div>
             </div>
         </>
     )

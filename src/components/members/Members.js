@@ -24,21 +24,26 @@ export const Members = () => {
         <>
             <h2 className="membersTitle">Our Members</h2>
             <div className="searchArea">
-                <input placeholder="Enter genre..." onChange={(event) => setQuery(event.target.value)}/>
+                <input placeholder="Enter name, title, genre..." onChange={(event) => setQuery(event.target.value)}/>
             </div>
+            <div className="membersList">
             {
                 members.filter((member) => {
                     if (query === "") {
                         return member
                     } else if (member.genre.genre.toLowerCase().includes(query.toLowerCase())) {
                         return member
+                    } else if (member.user.name.toLowerCase().includes(query.toLowerCase())) {
+                        return member
                     }
                 }).map((member) => {
-                    return <div className="member" key={`member--${member.id}`}>{member.user.name}<br/>{member.user.email}<br/>{member.phone}<br/>
-                    {member.tag.tag}<br/>{member.genre.genre}<br/>${member.budget}
-                    <div><button className="requestButton" onClick={() => history.push(`/makeRequest/${member.id}`)}>Make Request</button></div></div>
+                    return <div className="member" key={`member--${member.id}`}><p>{member.user.name}<br/>{member.user.email}<br/>{member.phone}<br/>
+                        {member.tag.tag}<br/>{member.genre.genre}<br/>${member.budget}</p>
+                        <button className="requestButton" onClick={() => history.push(`/makeRequest/${member.id}`)}>Request</button>
+                        </div>
                 })
             }
+            </div>
         </>
     )
 }

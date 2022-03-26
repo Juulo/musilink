@@ -44,31 +44,59 @@ export const UserRequests = () => {
     
     return(
         <>
-            <h2 className="requestsTitle">Your Requests</h2>
+            <h2 className="userRequestsTitle">Your Requests</h2>
+            <div className="userRequestTypes">
+                <div className="pendingUserRequests">
+                    <h4 className="userPending">Pending Requests</h4>
+                    {
+                        requests.map((request) => {
+                            const foundUserThatIsMemberForPending = users.find((user) => {
+                                return user.id === request.member.userId
+                            })
+                                if(!request.accepted && !request.completed) {
+                                    return <div align="left"className="userPendingRequests"><p key={`pendingRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMemberForPending.name}<br/> Description: {request.description}
+                                    </p><button className="deleteButton" onClick={() => deleteRequests(request.id)}>Delete</button>
+                                    </div>
+                                }
+                        })
+                    }
+                </div>                
+                <div className="acceptedUserRequests">
+                    <h4 className="userAccepted">Accepted Requests</h4>
+                    {
+                        requests.map((request) => {
+                            // member.tag member.genre user.name user.email
+                            const foundUserThatIsMemberForAccepted = users.find((user) => {
+                                return user.id === request.member.userId
+                            })
+                                if (request.accepted && !request.completed) {
+                                    return <div align="center"className="userAcceptedRequests"><p key={`acceptedRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMemberForAccepted.name}<br/> Description: {request.description}
+                                    </p><button className="deleteButton" onClick={() => deleteRequests(request.id)}>Delete</button>
+                                    </div>
+                                }
+                        })
+                    }
+                </div>                
+                <div className="completedUserRequests">
+                    <h4 className="userCompleted">Completed Requests</h4>
+                    {
+                        requests.map((request) => {
+                            // member.tag member.genre user.name user.email
+                            const foundUserThatIsMember = users.find((user) => {
+                                return user.id === request.member.userId
+                            })
+                                if (!request.accepted && request.completed) {
+                                    return <div align="right"className="userCompletedRequests"><p key={`completedRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMember.name}<br/> Description: {request.description}
+                                    </p><button className="deleteButton" onClick={() => deleteRequests(request.id)}>Delete</button>
+                                    </div>
+                                }
+                        })
+                    }
+                </div>                
+            </div>
             <div className="userRequests">
-            {
-                requests.map((request) => {
-                        // member.tag member.genre user.name user.email
-                    const foundUserThatIsMember = users.find((user) => {
-                        return user.id === request.member.userId
-                    })
-                        if(!request.accepted && !request.completed) {
-                            return <div className="pendingRequests"><p key={`pendingRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMember.name}<br/> Description: {request.description}
-                            <button className="deleteButton" onClick={() => deleteRequests(request.id)}>Delete</button>
-                            </p></div>
-                        } else if (request.accepted && !request.completed) {
-                            return <div className="acceptedRequests"><p key={`acceptedRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMember.name}<br/> Description: {request.description}
-                            <button className="deleteButton" onClick={() => deleteRequests(request.id)}>Delete</button>
-                            </p></div>
-                        } else if (!request.accepted && request.completed) {
-                            return <div className="completedRequests"><p key={`completedRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMember.name}<br/> Description: {request.description}
-                            <button className="deleteButton" onClick={() => deleteRequests(request.id)}>Delete</button>
-                            </p></div>
-                        }
-                })
-            }
             <div className="linkToProfile">
-                <button className="profileButton" onClick={() => 
+                <button className="userProfileButton" onClick={() => 
                     history.push(`/userProfile/${parseInt(localStorage.getItem("musilink_user"))}`)}>
                         Visit Profile
                 </button>

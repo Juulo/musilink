@@ -15,6 +15,7 @@ export const MusiLink = () => (
     <Route
       render={() => {
         const user = localStorage.getItem("musilink_user")
+        
         if (user) {
           if (!user.isMember) {
             return <>

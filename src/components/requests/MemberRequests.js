@@ -11,6 +11,7 @@ export const MemberRequests = () => {
     // get our request object so that we can use PUT method to replace data
     // set each properties initial data as the current object data
     const [request, updateThisRequest] = useState({})
+    const [isFading, setIsFading] = useState(false)
     const history = useHistory()
     
     // create a function that updates the page on all data change
@@ -27,11 +28,17 @@ export const MemberRequests = () => {
         },[]
     )
     
+    const fade = (cb) => {
+        setIsFading(true)
+        cb()
+    }
+    
     // create a function that deletes requests
     const denyRequest = (id) => {
         fetch(`http://localhost:8088/requests/${id}`, {
             method: "DELETE"
         })
+            .then(()=>{setIsFading(false)})
             .then(
                 () => {
                     fetch("http://localhost:8088/requests?_expand=member&_expand&_expand=user")
@@ -63,10 +70,14 @@ export const MemberRequests = () => {
         })
             .then(
                 () => {
+                    setIsFading(false)
+                }
+            )         
+            .then(
+                () => {
                     updateAllInfoOnPage()
                 }
             )
-            
         // call function to update all info on page
     }
     // create a function that lists requests as complete on click
@@ -93,9 +104,15 @@ export const MemberRequests = () => {
         })
             .then(
                 () => {
+                    setIsFading(false)
+                }
+            )
+            .then(
+                () => {
                     updateAllInfoOnPage()
                 }
             )
+
     }
 
     // map each request with the members ID
@@ -110,9 +127,9 @@ export const MemberRequests = () => {
                     {
                         requests.map((request) => {
                             if(!request.accepted && !request.completed) {
-                                return <div align="left" className="pendingRequests"><p key={`pendingRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name} <br/> Description: {request.description}
-                                </p><button className="denyButton" onClick={() => denyRequest(request.id)}>Deny</button>
-                                <button className="acceptButton" onClick={(evt) => acceptRequest(evt, request)}>Accept</button>
+                                return <div align="left" className={isFading ? "requestFade" : "pendingRequests"}><p key={`pendingRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name} <br/> Description: {request.description}
+                                </p><button className="denyButton" onClick={() => fade(setTimeout(() =>denyRequest(request.id), 1550))}>Deny</button>
+                                <button className="acceptButton" onClick={(evt) => fade(setTimeout(() =>acceptRequest(evt, request), 1550))}>Accept</button>
                                 </div>
                             }
                         })
@@ -123,9 +140,9 @@ export const MemberRequests = () => {
                     {
                         requests.map((request) => {
                             if(request.accepted && !request.completed) {
-                                return <div align="center" className="acceptedRequests"><p key={`acceptedRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name}<br/> Description: {request.description}
-                                </p><button className="abandonButton" onClick={() => denyRequest(request.id)}>Abandon</button>
-                                <button className="completeButton" onClick={(evt) => completeRequest(evt, request)}>Complete</button>
+                                return <div align="center" className={isFading ? "requestFade" : "acceptedRequests"}><p key={`acceptedRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name}<br/> Description: {request.description}
+                                </p><button className="abandonButton" onClick={() => fade(setTimeout(() =>denyRequest(request.id), 1550))}>Abandon</button>
+                                <button className="completeButton" onClick={(evt) => fade(setTimeout(() =>completeRequest(evt, request), 1550))}>Complete</button>
                                 </div>
                             }
                         })
@@ -136,8 +153,8 @@ export const MemberRequests = () => {
                     {
                         requests.map((request) => {
                             if(!request.accepted && request.completed) {
-                                return <div align="right" className="completedRequests"><p key={`completedRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name}<br/> Description: {request.description}
-                                </p><button className="memberDeleteButton" onClick={() => denyRequest(request.id)}>Delete</button>
+                                return <div align="right" className={isFading ? "requestFade" : "completedRequests"}><p key={`completedRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name}<br/> Description: {request.description}
+                                </p><button className="memberDeleteButton" onClick={() => fade(setTimeout(() =>denyRequest(request.id), 1550))}>Delete</button>
                                 </div>
                             }
                         })

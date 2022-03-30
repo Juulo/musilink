@@ -10,6 +10,7 @@ export const UserRequests = () => {
     // also fetch all members to expand users on
     const [users, updateUsers] = useState([])
     const [members, updateMembers] = useState([])
+    const [isFading, setIsFading] = useState(false)
     const history = useHistory()
     
     // use effect to update requests page on load
@@ -23,12 +24,18 @@ export const UserRequests = () => {
                 .then((data) => { updateRequests(data) })
         },[]
     )
+
+    const fade = (cb) => {
+        setIsFading(true)
+        cb()
+    }
     
     // create a function that deletes our request on the click of a button
     const deleteRequests = (id) => {
         fetch(`http://localhost:8088/requests/${id}`, {
             method: "DELETE"
         })
+            .then(()=>{setIsFading(false)})
             .then(
                 () => {
                     fetch("http://localhost:8088/requests?_expand=member&_expand&_expand=user")
@@ -54,8 +61,8 @@ export const UserRequests = () => {
                                 return user.id === request.member.userId
                             })
                                 if(!request.accepted && !request.completed) {
-                                    return <div align="left"className="userPendingRequests"><p key={`pendingRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMemberForPending.name}<br/> Description: {request.description}
-                                    </p><button className="deleteButton" onClick={() => deleteRequests(request.id)}>Delete</button>
+                                    return <div align="left"className={isFading ? "userRequestFading" : "userPendingRequests"}><p key={`pendingRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMemberForPending.name}<br/> Description: {request.description}
+                                    </p><button className="deleteButton" onClick={() => fade(setTimeout(()=>deleteRequests(request.id), 1550))}>Delete</button>
                                     </div>
                                 }
                         })
@@ -70,8 +77,8 @@ export const UserRequests = () => {
                                 return user.id === request.member.userId
                             })
                                 if (request.accepted && !request.completed) {
-                                    return <div align="center"className="userAcceptedRequests"><p key={`acceptedRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMemberForAccepted.name}<br/> Description: {request.description}
-                                    </p><button className="deleteButton" onClick={() => deleteRequests(request.id)}>Delete</button>
+                                    return <div align="center"className={isFading ? "userRequestFading" : "userAcceptedRequests"}><p key={`acceptedRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMemberForAccepted.name}<br/> Description: {request.description}
+                                    </p><button className="deleteButton" onClick={() => fade(setTimeout(()=>deleteRequests(request.id), 1550))}>Delete</button>
                                     </div>
                                 }
                         })
@@ -86,8 +93,8 @@ export const UserRequests = () => {
                                 return user.id === request.member.userId
                             })
                                 if (!request.accepted && request.completed) {
-                                    return <div align="right"className="userCompletedRequests"><p key={`completedRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMember.name}<br/> Description: {request.description}
-                                    </p><button className="deleteButton" onClick={() => deleteRequests(request.id)}>Delete</button>
+                                    return <div align="right"className={isFading ? "userRequestFading" : "userCompletedRequests"}><p key={`completedRequest--${request.id}`}>Deadline: {request.deadline}<br/>Requestee: {foundUserThatIsMember.name}<br/> Description: {request.description}
+                                    </p><button className="deleteButton" onClick={() => fade(setTimeout(()=>deleteRequests(request.id), 1550))}>Delete</button>
                                     </div>
                                 }
                         })

@@ -1,5 +1,6 @@
 .membersTitle {
     justify-content: center;
+    align-items: center;
     display: flex;
 }
 
@@ -13,6 +14,7 @@
     text-align: center;
     margin: 0 20rem;
     column-gap: 12px;
+    zoom: 130%;
 }
 .member {
     background-color: rgb(255, 121, 255);

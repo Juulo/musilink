@@ -4,11 +4,14 @@
     justify-content: space-evenly;
     flex-direction: row;
     text-align: center;
+    padding: 1rem;
+    color: rgb(88, 88, 109);
+    text-decoration: none;
 }
 
 .navbar__item {
     flex-basis: 20%;
-    list-style-type: none;
+    list-style-type: none;    
 }
 
 .navLogo {

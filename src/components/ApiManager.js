@@ -25,7 +25,17 @@ export const getAllUsers = () => {
 
 export const getUser = () => {
     const musiLinkUser = localStorage.getItem("musilink_user")
-    return fetch(`http://localhost:8088/users?userId=${parseInt(musiLinkUser)}`)
+    return fetch(`http://localhost:8088/users/${parseInt(musiLinkUser)}`)
+        .then(res => res.json())
+}
+
+export const getTags = () => {
+    return fetch("http://localhost:8088/tags")
+        .then(res => res.json())
+}
+
+export const getGenres = () => {
+    return fetch("http://localhost:8088/genres")
         .then(res => res.json())
 }
 

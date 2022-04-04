@@ -1,17 +1,96 @@
+
 .landingSection {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
+    align-items: center;
     flex-direction: row;
-    margin: 1rem 2rem;
-    padding: 9rem;
+    width: auto;
+    height: 10em;
+    padding-top: 100px;
+    grid-template-columns: 48% 48%;
+    zoom: 180%;
+    background-color: linear-gradient(0deg, #f8f7f5, white 50);
 }
-
 .landingLogo {
-    padding: 5rem;
+    width: 400px;
+    margin-left: -3rem;
+}
+.landingSection button {
+    padding: .5em;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: none;
+    background-color: rgb(192, 110, 192);
+    border-radius: 0.2em;
+    color: #f8f7f5;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all ease 0.2s;
 }
 
-.landingText {
-    padding: 0;
-    width: 50rem;
+.landingSection button:hover {
+    background-color: rgb(150, 81, 150); 
+}
+
+.heroSection {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    width: auto;
+    padding-top: 190px;
+    grid-template-columns: 48% 48%;
+}
+
+.shoutoutSection {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    padding-top: 50px;
+    width: auto;
+    grid-template-columns: 48% 48%;
+}
+
+.heroText h2 {
+    line-height: 1.1875;
+    letter-spacing: -.3px;
+}
+
+.heroText {
+    padding: 7rem;
+}
+
+.shoutoutText h2 {
+    line-height: 1.1875;
+    letter-spacing: -.3px;
+}
+
+
+.shoutoutText {
+    padding: 7rem;
+}
+
+.shoutoutImg {
+    width: 550px;
+    height: auto;
+    margin-bottom: 1rem;
+    margin-right: 1em;
+    border-radius: 0.2rem;
+}
+
+.heroImg {
+    width: 550px;
+    height: auto;
+    margin-bottom: 1rem;
+    margin-left: 1em;
+    border-radius: 0.2rem;
+}
+
+footer {
+    font-size: 12px;
+    padding-left: 20px;
 }

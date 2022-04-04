@@ -50,6 +50,8 @@ export const MemberRequests = () => {
     // create a function that accepts requests on click
     const acceptRequest = (evt, request) => {
         evt.preventDefault()
+        let today = new Date(Date.now())
+        today = `${today.getMonth()}/${today.getDate()}/${today.getFullYear()}`
         // create our new object with the requests initial data and the changed request.accepted value to true
         const acceptTheRequestEdit = {
             userId: request.userId,
@@ -57,7 +59,7 @@ export const MemberRequests = () => {
             description: request.description,
             deadline: request.deadline,
             accepted: true,
-            dateAccepted: request.dateAccepted,
+            dateAccepted: today,
             completed: request.completed,
             dateCompleted: request.dateCompleted
         }
@@ -83,6 +85,8 @@ export const MemberRequests = () => {
     // create a function that lists requests as complete on click
     const completeRequest = (evt, request) => {
         evt.preventDefault()
+        let today = new Date(Date.now())
+        today = `${today.getMonth()}/${today.getDate()}/${today.getFullYear()}`
         // create a new request object with our inital request data and the accepted property given a value of false
         // then give our completed property a value of true
         const completeTheRequestEdit = {
@@ -93,7 +97,7 @@ export const MemberRequests = () => {
             accepted: false,
             dateAccepted: request.dateAccepted,
             completed: true,
-            dateCompleted: request.dateCompleted
+            dateCompleted: today
         }
         return fetch(`http://localhost:8088/requests/${request.id}`, {
             method: "PUT",
@@ -127,7 +131,8 @@ export const MemberRequests = () => {
                     {
                         requests.map((request) => {
                             if(!request.accepted && !request.completed) {
-                                return <div align="left" className={isFading ? "requestFade" : "pendingRequests"}><p key={`pendingRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name} <br/> Description: {request.description}
+                                return <div align="left" className={isFading ? "requestFade" : "pendingRequests"}><p key={`pendingRequest--${request.id}`}>
+                                    Deadline: {request.deadline}<br/> Requester: {request.user.name} <br/> Description: {request.description}
                                 </p><button className="denyButton" onClick={() => fade(setTimeout(() =>denyRequest(request.id), 1550))}>Deny</button>
                                 <button className="acceptButton" onClick={(evt) => fade(setTimeout(() =>acceptRequest(evt, request), 1550))}>Accept</button>
                                 </div>
@@ -140,7 +145,8 @@ export const MemberRequests = () => {
                     {
                         requests.map((request) => {
                             if(request.accepted && !request.completed) {
-                                return <div align="center" className={isFading ? "requestFade" : "acceptedRequests"}><p key={`acceptedRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name}<br/> Description: {request.description}
+                                return <div align="center" className={isFading ? "requestFade" : "acceptedRequests"}><p key={`acceptedRequest--${request.id}`}>
+                                    Deadline: {request.deadline}<br/> Requester: {request.user.name}<br/> Description: {request.description}
                                 </p><button className="abandonButton" onClick={() => fade(setTimeout(() =>denyRequest(request.id), 1550))}>Abandon</button>
                                 <button className="completeButton" onClick={(evt) => fade(setTimeout(() =>completeRequest(evt, request), 1550))}>Complete</button>
                                 </div>
@@ -153,7 +159,8 @@ export const MemberRequests = () => {
                     {
                         requests.map((request) => {
                             if(!request.accepted && request.completed) {
-                                return <div align="right" className={isFading ? "requestFade" : "completedRequests"}><p key={`completedRequest--${request.id}`}>Deadline: {request.deadline}<br/> Requester: {request.user.name}<br/> Description: {request.description}
+                                return <div align="right" className={isFading ? "requestFade" : "completedRequests"}><p key={`completedRequest--${request.id}`}>
+                                    Deadline: {request.deadline}<br/> Requester: {request.user.name}<br/> Description: {request.description}
                                 </p><button className="memberDeleteButton" onClick={() => fade(setTimeout(() =>denyRequest(request.id), 1550))}>Delete</button>
                                 </div>
                             }

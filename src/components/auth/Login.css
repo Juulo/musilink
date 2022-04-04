@@ -26,6 +26,8 @@ fieldset {
 
 .form-control {
     display: block;
+    justify-content: center;
+    align-items: center;
     width: 94%;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem;

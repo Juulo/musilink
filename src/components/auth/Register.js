@@ -21,12 +21,15 @@ export const Register = (props) => {
         e.preventDefault()
         existingUserCheck()
             .then((userExists) => {
+                const copy = {...user}
+                copy.about = ""
+                copy.phone= ""
                 fetch("http://localhost:8088/users", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(user)
+                    body: JSON.stringify(copy)
                 })
                     .then(res => res.json())
                     .then(createdUser => {
@@ -40,8 +43,7 @@ export const Register = (props) => {
                             history.push("/userRequests")
                         }
                         else if (!userExists && user.isMember) {
-                            localStorage.setItem("musilink_member", user.memberId)
-                            history.push("/memberRequests")             
+                            history.push("/memberRegistration")             
                         }
                         else {
                             conflictDialog.current.showModal()

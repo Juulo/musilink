@@ -35,9 +35,11 @@ export const Members = () => {
                         return member
                     } else if (member.user.name.toLowerCase().includes(query.toLowerCase())) {
                         return member
+                    } else if (member.tag.tag.toLowerCase().includes(query.toLowerCase())) {
+                        return member
                     }
                 }).map((member) => {
-                    return <div className="member" key={`member--${member.id}`}><p>{member.user.name}<br/>{member.user.email}<br/>{member.phone}<br/>
+                    return <div className="member" key={`member--${member.id}`}><p>{member.user.name}<br/>{member.user.email}<br/>
                         {member.tag.tag}<br/>{member.genre.genre}<br/>${member.budget}</p>
                         <button className="requestButton" onClick={() => history.push(`/makeRequest/${member.id}`)}>Request</button>
                         </div>

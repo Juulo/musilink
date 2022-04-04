@@ -5,9 +5,27 @@ import "./Navbar.css"
 
 export const UserNavbar = () => {
     //Links for browser component
+    if(localStorage.getItem("musilink_member")){
+        return(
+            <>
+               <header className="navbar">
+                    <div>
+                        <img className="navLogo" src={logo}></img>
+                    </div>
+                    <div className="navbar_item active">
+                        <Link className="navbar_link" to="/memberRequests">Your Requests</Link>
+                    </div>
+                    <div className="navbar_item active">
+                        <Link to="/" onClick={()=>{
+                            localStorage.clear()}}>Logout</Link>
+                    </div>
+                </header> 
+            </>
+        )
+    }
     return(
         <>
-           <ul className="navbar">
+           <header className="navbar">
                 <div>
                     <img className="navLogo" src={logo}></img>
                 </div>
@@ -19,9 +37,9 @@ export const UserNavbar = () => {
                 </div>
                 <div className="navbar_item active">
                     <Link to="/" onClick={()=>{
-                        localStorage.removeItem("musilink_user")}}>Logout</Link>
+                        localStorage.clear()}}>Logout</Link>
                 </div>
-            </ul> 
+            </header> 
         </>
     )
 }

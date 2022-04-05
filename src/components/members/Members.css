@@ -17,7 +17,7 @@
     zoom: 130%;
 }
 .member {
-    background-color: rgb(255, 121, 255);
+    background-color: rgb(255, 185, 255);
     max-width: 32%;
     text-align: center;
     align-items: center;
@@ -29,7 +29,7 @@
 
 .member:hover {
     transform: scale(1.03);
-    background-color: rgb(255, 75, 255);
+    background-color: rgb(255, 136, 255);
     box-shadow: 0px 4px 10px;
 }
 .requestButton {

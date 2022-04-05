@@ -16,7 +16,7 @@ export const UserNavbar = () => {
                         <Link className="navbar_link" to="/memberRequests">Your Requests</Link>
                     </div>
                     <div className="navbar_item active">
-                        <Link to="/" onClick={()=>{
+                        <Link className="navbar_link" to="/" onClick={()=>{
                             localStorage.clear()}}>Logout</Link>
                     </div>
                 </header> 
@@ -36,7 +36,7 @@ export const UserNavbar = () => {
                     <Link className="navbar_link" to="/userRequests">Your Requests</Link>
                 </div>
                 <div className="navbar_item active">
-                    <Link to="/" onClick={()=>{
+                    <Link className="navbar_link" to="/" onClick={()=>{
                         localStorage.clear()}}>Logout</Link>
                 </div>
             </header> 

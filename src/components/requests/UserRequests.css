@@ -113,9 +113,9 @@
 
 .deleteButton {
     margin: 12px;
-    padding: 0.2rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: 0.5rem;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
     transition: all 0.3s ease 0s;
     cursor: pointer;
     letter-spacing: 0.5px;

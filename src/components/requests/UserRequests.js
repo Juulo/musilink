@@ -54,7 +54,7 @@ export const UserRequests = () => {
             <h2 className="userRequestsTitle">Your Requests</h2>
             <div className="userRequestTypes">
                 <div className="pendingUserRequests">
-                    <h4 className="userPending">Pending Requests</h4>
+                    <h4 className="userPending">Pending</h4>
                     {
                         requests.map((request) => {
                             const foundUserThatIsMemberForPending = users.find((user) => {
@@ -69,7 +69,7 @@ export const UserRequests = () => {
                     }
                 </div>                
                 <div className="acceptedUserRequests">
-                    <h4 className="userAccepted">Accepted Requests</h4>
+                    <h4 className="userAccepted">Accepted</h4>
                     {
                         requests.map((request) => {
                             // member.tag member.genre user.name user.email
@@ -85,7 +85,7 @@ export const UserRequests = () => {
                     }
                 </div>                
                 <div className="completedUserRequests">
-                    <h4 className="userCompleted">Completed Requests</h4>
+                    <h4 className="userCompleted">Completed</h4>
                     {
                         requests.map((request) => {
                             // member.tag member.genre user.name user.email

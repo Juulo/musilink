@@ -62,6 +62,9 @@
 
 .heroText {
     padding: 7rem;
+    font-size: 25px;
+    width: 33%;
+    margin-left: 3rem;
 }
 
 .shoutoutText h2 {
@@ -72,18 +75,21 @@
 
 .shoutoutText {
     padding: 7rem;
+    font-size: 25px;
+    width: 33%;
+    margin-left: 3rem;
 }
 
 .shoutoutImg {
-    width: 550px;
-    height: auto;
+    width: 700px;
+    height: 400px;
     margin-bottom: 1rem;
     margin-right: 1em;
     border-radius: 0.2rem;
 }
 
 .heroImg {
-    width: 550px;
+    width: 700px;
     height: auto;
     margin-bottom: 1rem;
     margin-left: 1em;

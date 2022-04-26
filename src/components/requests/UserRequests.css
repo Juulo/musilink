@@ -2,6 +2,7 @@
     justify-content: center;
     text-align: center;
     display: flex;
+    font-size: 30px;
 }
 
 .userRequestTypes {
@@ -14,7 +15,7 @@
 }
 
 .userRequestTypes h4 {
-    font-size: 16px;
+    font-size: 20px;
     color: rgba(0, 0, 0, 0.76);
 }
 
@@ -35,6 +36,7 @@
     flex-direction: column;
     width: 32%;
     margin: 3.5rem;
+    font-size: 20px;
 }
 
 .acceptedUserRequests {
@@ -42,6 +44,7 @@
     flex-direction: column;
     width: 32%;
     margin: 3.5rem;
+    font-size: 20px;
 }
 
 .completedUserRequests {
@@ -49,6 +52,7 @@
     flex-direction: column;
     width: 32%;
     margin: 3.5rem;
+    font-size: 20px;
 }
 
 .userPendingRequests {
@@ -64,7 +68,7 @@
 }
 
 .userPendingRequests:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     box-shadow: 0px 4px 20px;
     background-color: rgb(255, 183, 183);
 }
@@ -82,7 +86,7 @@
 }
 
 .userAcceptedRequests:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     box-shadow: 0px 4px 20px;
     background-color: rgb(253, 180, 250);
 }
@@ -100,7 +104,7 @@
 }
 
 .userCompletedRequests:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     box-shadow: 0px 4px 20px;
     background-color: rgb(189, 247, 178);
 }
@@ -109,6 +113,8 @@
     position: relative;
     bottom: 1rem;
     left: 3rem;
+    font-size: 16px;
+    padding: 0.4em;
 }
 
 .deleteButton {

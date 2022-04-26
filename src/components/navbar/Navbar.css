@@ -12,18 +12,20 @@
 
 .navbar__item {
     flex-basis: 20%;
-    list-style-type: none;    
+    list-style-type: none;
 }
 
 .navLogo {
-    width: 40%;
+    width: 50%;
     height: 60%;
+    margin-top: 0.1rem;
 }
 
 .navbar_link {
     text-decoration: none;
     color: rgb(105, 104, 128);
     transition: all ease 0.2s;
+    font-size: 20px;   
 }
 
 .navbar_link:hover {

@@ -63,7 +63,7 @@
 }
 
 .pendingRequests:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     box-shadow: 0px 4px 20px;
     background-color: rgb(255, 183, 183);
 }
@@ -81,7 +81,7 @@
 }
 
 .acceptedRequests:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     box-shadow: 0px 4px 20px;
     background-color: rgb(253, 180, 250);
 }
@@ -99,7 +99,7 @@
 }
 
 .completedRequests:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     box-shadow: 0px 4px 20px;
     background-color: rgb(189, 247, 178);
 }

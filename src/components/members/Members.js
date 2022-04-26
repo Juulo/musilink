@@ -26,25 +26,27 @@ export const Members = () => {
             <div className="searchArea">
                 <input placeholder="Enter name, title, genre..." onChange={(event) => setQuery(event.target.value)}/>
             </div>
-            <div className="membersList">
-            {
-                members.filter((member) => {
-                    if (query === "") {
-                        return member
-                    } else if (member.genre.genre.toLowerCase().includes(query.toLowerCase())) {
-                        return member
-                    } else if (member.user.name.toLowerCase().includes(query.toLowerCase())) {
-                        return member
-                    } else if (member.tag.tag.toLowerCase().includes(query.toLowerCase())) {
-                        return member
-                    }
-                }).map((member) => {
-                    return <div className="member" key={`member--${member.id}`}><p>{member.user.name}<br/>{member.user.email}<br/>
-                        {member.tag.tag}<br/>{member.genre.genre}<br/>${member.budget}</p>
-                        <button className="requestButton" onClick={() => history.push(`/makeRequest/${member.id}`)}>Request</button>
-                        </div>
-                })
-            }
+            <div className="membersParentDiv">
+                <div className="membersList">
+                {
+                    members.filter((member) => {
+                        if (query === "") {
+                            return member
+                        } else if (member.genre.genre.toLowerCase().includes(query.toLowerCase())) {
+                            return member
+                        } else if (member.user.name.toLowerCase().includes(query.toLowerCase())) {
+                            return member
+                        } else if (member.tag.tag.toLowerCase().includes(query.toLowerCase())) {
+                            return member
+                        }
+                    }).map((member) => {
+                        return <div className="member" key={`member--${member.id}`}><p>{member.user.name}<br/>{member.user.email}<br/>
+                            {member.tag.tag}<br/>{member.genre.genre}<br/>${member.budget}</p>
+                            <button className="requestButton" onClick={() => history.push(`/makeRequest/${member.id}`)}>Request</button>
+                            </div>
+                    })
+                }
+                </div>
             </div>
         </>
     )

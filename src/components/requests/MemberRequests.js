@@ -127,7 +127,7 @@ export const MemberRequests = () => {
             <h2 className="requestsTitle">Your Requests</h2>
             <div className="requestTypes">
                 <div className="pendingMemberRequests">
-                    <h4 className="pending">Pending Requests</h4>
+                    <h4 className="pending">Pending Acceptance</h4>
                     {
                         requests.map((request) => {
                             if(!request.accepted && !request.completed) {
@@ -141,7 +141,7 @@ export const MemberRequests = () => {
                     }
                 </div>               
                 <div className="acceptedMemberRequests">
-                    <h4 className="accepted">Accepted Requests</h4>
+                    <h4 className="accepted">In Progress</h4>
                     {
                         requests.map((request) => {
                             if(request.accepted && !request.completed) {
@@ -155,7 +155,7 @@ export const MemberRequests = () => {
                     }
                 </div>                  
                 <div className="completedMemberRequests">
-                    <h4 className="completed">Completed Requests</h4>
+                    <h4 className="completed">Completed</h4>
                     {
                         requests.map((request) => {
                             if(!request.accepted && request.completed) {
